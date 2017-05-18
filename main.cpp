@@ -66,9 +66,9 @@ int MinDistance2(std::vector<int> A) {
 int main()
 {
     //CONFIG
-    int PERMUTATIONS = 5; //Unique permutations of randomly filled arrays.
-    int GROWTH_RATE = 1; //How many times the INCREMENT_AMOUNT will be added together to form new lengths of arrays
-    int LENGTH = 20; //Vector length, as well as degree that array length will grow with GROWTH_RATE
+    int LENGTH_MIN = 10; //Minimum vector length
+    int LENGTH_MAX = 50; //Maximum vector length
+    int GROWTH_RATE = 10; //GROWTH_RATE 10 = Vector Length 10 & 20 & 30 & ... & LENGTH_MAX
     int VALUE_MAX = 1000; //Array values will generate from 1 to VALUE_MAX
 
     //Prepare CSV
@@ -76,19 +76,20 @@ int main()
     myfile.open ("outputMain.csv");
     myfile << "Length (n)" << "," << "Basic Operations" << "," << "Theoretical Average Efficiency" << endl;
 
-    for (int i = 0; i < PERMUTATIONS; i++) {
-        //generate a new seed based on time for each array
-        auto seed = chrono::high_resolution_clock::now().time_since_epoch().count();
-        std::mt19937 mt(seed);
+    int currentLength = LENGTH_MIN;
 
-        vector<int> a = generateArray(mt, LENGTH, VALUE_MAX);
-        printArray(a, LENGTH);
-        MinDistance1(a);
-        MinDistance2(a);
+    while (currentLength < LENGTH_MAX) {
+        currentLength += GROWTH_RATE;
+
+        for (int i = 0; i < currentLength - 1; i++) {
+            //generate a new seed based on time for each array
+            auto seed = chrono::high_resolution_clock::now().time_since_epoch().count();
+            std::mt19937 mt(seed);
+
+            vector<int> a = generateArray(mt, currentLength, VALUE_MAX);
+            printArray(a, currentLength);
+            MinDistance1(a);
+            MinDistance2(a);
+        }
     }
-
-
-
-
-
 }
