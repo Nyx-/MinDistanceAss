@@ -79,8 +79,6 @@ int main()
     int currentLength = LENGTH_MIN;
 
     while (currentLength < LENGTH_MAX) {
-        currentLength += GROWTH_RATE;
-
         for (int i = 0; i < currentLength - 1; i++) {
             //generate a new seed based on time for each array
             auto seed = chrono::high_resolution_clock::now().time_since_epoch().count();
@@ -91,5 +89,7 @@ int main()
             MinDistance1(a);
             MinDistance2(a);
         }
+
+        currentLength += GROWTH_RATE;
     }
 }
