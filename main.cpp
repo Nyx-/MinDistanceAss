@@ -82,9 +82,9 @@ int MinDistance2(std::vector<int> A, int length) {
 int main()
 {
     //CONFIG
-    int LENGTH_MIN = 1; //Minimum vector length
-    int LENGTH_MAX = 10; //Maximum vector length
-    int GROWTH_RATE = 1; //GROWTH_RATE 10 = Vector Length 10 & 20 & 30 & ... & LENGTH_MAX
+    int LENGTH_MIN = 10; //Minimum vector length
+    int LENGTH_MAX = 100; //Maximum vector length
+    int GROWTH_RATE = 10; //GROWTH_RATE 10 = Vector Length 10 & 20 & 30 & ... & LENGTH_MAX
     int VALUE_MAX = 100000; //Array values will generate from 1 to VALUE_MAX
 
     //Prepare CSV
@@ -110,6 +110,8 @@ int main()
             result2 = MinDistance2(a, currentLength);
 
             myfile << currentLength << "," << result1 << "," << counter1 << "," << result2 << "," << counter2 << endl;
+            counter1 = 0;
+            counter2 = 0;
         }
 
         currentLength += GROWTH_RATE;
