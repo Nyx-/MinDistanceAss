@@ -76,6 +76,7 @@ int MinDistance2(std::vector<int> A, int length) {
 }
 
 void testMinDistance() {
+    cout << endl << endl << "-----------------------------------------------" << endl << endl;
     cout << "Running Tests";
     int length = 10;
 
@@ -95,7 +96,7 @@ void testMinDistance() {
     printArray(c, length);
     printValue("     dmin1: ", MinDistance1(c, length));
     printValue("     dmin2: ", MinDistance2(c, length));
-
+    cout << endl << endl << "-----------------------------------------------" << endl << endl;
 }
 
 int main()
