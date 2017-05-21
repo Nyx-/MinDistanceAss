@@ -83,6 +83,9 @@ void testMinDistance() {
     vector<int> a = { 1, 8, 17, 23, 36, 49, 60, 77, 85, 94 }; //6
     vector<int> b = { 86, 12, 60, 46, 26, 38, 10, 5, 82, 95 }; //2
     vector<int> c = { 12, 12, 12, 12, 16, 19, 19, 19, 34, 36 }; //0
+    vector<int> d = { -17, -90, -7, -42, -4, -58, -50, -33, -46, -100 }; //3
+    vector<int> e = { -69, 56, 98, 65, -30, 47, 93, -21, -40, 71 }; //5
+    vector<int> f = { 2, -2, 9, -9, 39, -39, 94, -94, 44, -44 }; //4
 
     cout << endl << endl << "Sorted" << endl;
     printArray(a, length);
@@ -96,6 +99,18 @@ void testMinDistance() {
     printArray(c, length);
     printValue("     dmin1: ", MinDistance1(c, length));
     printValue("     dmin2: ", MinDistance2(c, length));
+    cout << endl << endl << "Negative Only" << endl;
+    printArray(d, length);
+    printValue("     dmin1: ", MinDistance1(d, length));
+    printValue("     dmin2: ", MinDistance2(d, length));
+    cout << endl << endl << "Negative & Positive" << endl;
+    printArray(e, length);
+    printValue("     dmin1: ", MinDistance1(e, length));
+    printValue("     dmin2: ", MinDistance2(e, length));
+    cout << endl << endl << "Negative & Positive Duplicates" << endl;
+    printArray(f, length);
+    printValue("     dmin1: ", MinDistance1(f, length));
+    printValue("     dmin2: ", MinDistance2(f, length));
     cout << endl << endl << "-----------------------------------------------" << endl << endl;
 }
 
