@@ -48,7 +48,6 @@ int MinDistance1(std::vector<int> A, int length) {
         for (int j = 0; j < length; j++) {
             counter1 = counter1 + 1;
             if ((i != j) && (abs(A[i] - A[j]) < dmin)) { //Basic Operation
-                counter1 = counter1 + 1;
                 dmin = abs(A[i] - A[j]);
             }
         }
@@ -68,7 +67,6 @@ int MinDistance2(std::vector<int> A, int length) {
             temp = abs(A[i] - A[j]);
             counter2 = counter2 + 1;
             if (temp < dmin) { //Basic Operation
-                counter2 = counter2 + 1;
                 dmin = temp;
             }
         }
@@ -84,6 +82,7 @@ int main()
     //CONFIG
     int LENGTH_MIN = 10; //Minimum vector length
     int LENGTH_MAX = 50; //Maximum vector length
+    int AVERAGE_OF = 20; //AVERAGE_OF
     int GROWTH_RATE = 10; //GROWTH_RATE 10 = Vector Length 10 & 20 & 30 & ... & LENGTH_MAX
     int VALUE_MAX = 10000; //Array values will generate from 1 to VALUE_MAX
 
@@ -99,7 +98,7 @@ int main()
     int currentLength = LENGTH_MIN;
 
     while (currentLength <= LENGTH_MAX) {
-        for (int i = 0; i < currentLength - 1; i++) {
+        for (int i = 0; i <= AVERAGE_OF; i++) {
             //generate a new seed based on time for each array
             auto seed = chrono::high_resolution_clock::now().time_since_epoch().count();
             std::mt19937 mt(seed);
