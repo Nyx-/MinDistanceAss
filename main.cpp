@@ -7,9 +7,6 @@
 
 using namespace std;
 
-int counter1;
-int counter2;
-
 vector<int> generateArray(std::mt19937 mt, int length, int maxVal) {
     //init array
     std::vector<int> arr(length);
@@ -40,42 +37,42 @@ void printArray(std::vector<int> arr, int length) {
     }
 }
 
-int MinDistance1(std::vector<int> A) {
-    double dmin1;
+int MinDistance1(std::vector<int> A, int counter) {
+    double dmin;
     int n = (sizeof(A)/sizeof(A[0]));
-    dmin1 = std::numeric_limits<double>::infinity();
+    dmin = std::numeric_limits<double>::infinity();
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            counter1 = counter1 + 1;
-            if ((i != j) && (abs(A[i] - A[j]) < dmin1)) { //Basic Operation
-                dmin1 = abs(A[i] - A[j]);
+            counter = counter + 1;
+            if ((i != j) && (abs(A[i] - A[j]) < dmin)) { //Basic Operation
+                dmin = abs(A[i] - A[j]);
             }
         }
     }
-    printValue("dmin1: ", dmin1);
-    printValue("counter1: ", counter1);
-    return dmin1;
+    printValue("dmin1: ", dmin);
+    printValue("counter1: ", counter);
+    return dmin;
 }
 
-int MinDistance2(std::vector<int> A) {
-    double dmin2;
+int MinDistance2(std::vector<int> A, int counter) {
+    double dmin;
     int n = (sizeof(A)/sizeof(A[0]));
     int temp = 0;
+    dmin = std::numeric_limits<double>::infinity();
 
-    dmin2 = std::numeric_limits<double>::infinity();
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
             temp = abs(A[i] - A[j]);
-            counter2 = counter2 + 1;
-            if (temp < dmin2) { //Basic Operation
-                dmin2 = temp;
+            counter = counter + 1;
+            if (temp < dmin) { //Basic Operation
+                dmin = temp;
             }
         }
     }
-    printValue("dmin2: ", dmin2);
-    printValue("counter2: ", counter2);
-    return dmin2;
+    printValue("dmin2: ", dmin);
+    printValue("counter2: ", counter);
+    return dmin;
 }
 
 
@@ -99,16 +96,17 @@ int main()
 
     while (currentLength < LENGTH_MAX) {
         for (int i = 0; i < currentLength - 1; i++) {
-            counter1 = 0;
-            counter2 = 0;
+            int counter1 = 0;
+            int counter2 = 0;
             //generate a new seed based on time for each array
             auto seed = chrono::high_resolution_clock::now().time_since_epoch().count();
             std::mt19937 mt(seed);
 
             vector<int> a = generateArray(mt, currentLength, VALUE_MAX);
             printArray(a, currentLength);
-            result1 = MinDistance1(a);
-            result2 = MinDistance2(a);
+            result1 = MinDistance1(a, counter1);
+            result2 = MinDistance2(a, counter2);
+
             myfile << currentLength << "," << result1 << "," << counter1 << "," << result2 << "," << counter2 << endl;
         }
 
