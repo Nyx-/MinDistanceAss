@@ -31,38 +31,12 @@ void printValue(string valueName, int value) {
 }
 
 void printArray(std::vector<int> arr, int length) {
-    cout << endl << endl;
     for (int i = 0; i < length; i++) {
         if (i % 20 == 0 ) {
             cout << endl;
         }
         cout << arr[i] << ", ";
     }
-}
-
-void testMinDistance() {
-    cout << "Running Tests" << endl << endl;
-    int length = 10;
-    double dmin;
-    dmin = std::numeric_limits<double>::infinity();
-
-    vector<int> a = { 1, 8, 17, 23, 36, 49, 60, 77, 85, 94 };
-    vector<int> b = { 86, 12, 60, 46, 26, 38, 10, 5, 82, 95 };
-    vector<int> c = { 12, 12, 12, 12, 16, 19, 19, 19, 34, 36 };
-
-    cout << "Sorted" << endl;
-    printArray(a, length);
-    printValue("     dmin1: ", MinDistance1(a, length));
-    printValue("     dmin2: ", MinDistance2(a, length));
-    cout << "Random" << endl;
-    printArray(b, length);
-    printValue("     dmin1: ", MinDistance1(b, length));
-    printValue("     dmin2: ", MinDistance2(b, length));
-    cout << "Duplicates" << endl;
-    printArray(c, length);
-    printValue("     dmin1: ", MinDistance1(c, length));
-    printValue("     dmin2: ", MinDistance2(c, length));
-
 }
 
 int MinDistance1(std::vector<int> A, int length) {
@@ -77,8 +51,8 @@ int MinDistance1(std::vector<int> A, int length) {
             }
         }
     }
-    printValue("     dmin1: ", dmin);
-    printValue("  counter1: ", counter1);
+//    printValue("     dmin1: ", dmin);
+//    printValue("  counter1: ", counter1);
     return dmin;
 }
 
@@ -96,11 +70,33 @@ int MinDistance2(std::vector<int> A, int length) {
             }
         }
     }
-    printValue("     dmin2: ", dmin);
-    printValue("  counter2: ", counter2);
+//    printValue("     dmin2: ", dmin);
+//    printValue("  counter2: ", counter2);
     return dmin;
 }
 
+void testMinDistance() {
+    cout << "Running Tests";
+    int length = 10;
+
+    vector<int> a = { 1, 8, 17, 23, 36, 49, 60, 77, 85, 94 }; //6
+    vector<int> b = { 86, 12, 60, 46, 26, 38, 10, 5, 82, 95 }; //2
+    vector<int> c = { 12, 12, 12, 12, 16, 19, 19, 19, 34, 36 }; //0
+
+    cout << endl << endl << "Sorted" << endl;
+    printArray(a, length);
+    printValue("     dmin1: ", MinDistance1(a, length));
+    printValue("     dmin2: ", MinDistance2(a, length));
+    cout << endl << endl << "Random" << endl;
+    printArray(b, length);
+    printValue("     dmin1: ", MinDistance1(b, length));
+    printValue("     dmin2: ", MinDistance2(b, length));
+    cout << endl << endl << "Duplicates" << endl;
+    printArray(c, length);
+    printValue("     dmin1: ", MinDistance1(c, length));
+    printValue("     dmin2: ", MinDistance2(c, length));
+
+}
 
 int main()
 {
