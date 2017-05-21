@@ -40,6 +40,31 @@ void printArray(std::vector<int> arr, int length) {
     }
 }
 
+void testMinDistance() {
+    cout << "Running Tests" << endl << endl;
+    int length = 10;
+    double dmin;
+    dmin = std::numeric_limits<double>::infinity();
+
+    vector<int> a = { 1, 8, 17, 23, 36, 49, 60, 77, 85, 94 };
+    vector<int> b = { 86, 12, 60, 46, 26, 38, 10, 5, 82, 95 };
+    vector<int> c = { 12, 12, 12, 12, 16, 19, 19, 19, 34, 36 };
+
+    cout << "Sorted" << endl;
+    printArray(a, length);
+    printValue("     dmin1: ", MinDistance1(a, length));
+    printValue("     dmin2: ", MinDistance2(a, length));
+    cout << "Random" << endl;
+    printArray(b, length);
+    printValue("     dmin1: ", MinDistance1(b, length));
+    printValue("     dmin2: ", MinDistance2(b, length));
+    cout << "Duplicates" << endl;
+    printArray(c, length);
+    printValue("     dmin1: ", MinDistance1(c, length));
+    printValue("     dmin2: ", MinDistance2(c, length));
+
+}
+
 int MinDistance1(std::vector<int> A, int length) {
     double dmin;
     dmin = std::numeric_limits<double>::infinity();
@@ -91,6 +116,7 @@ int main()
     myfile.open ("outputMain.csv");
     myfile << "Length (n)" << "," << "dmin1" << "," << "Min1 BO" << "," << "dmin2" << "," << "Min2 BO" << endl;
 
+    testMinDistance();
 
     int result1 = 0;
     int result2 = 0;
@@ -115,4 +141,7 @@ int main()
 
         currentLength += GROWTH_RATE;
     }
+
+    cout << endl << "Successfully exported to output.csv" << endl;
+    myfile.close();
 }

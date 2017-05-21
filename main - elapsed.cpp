@@ -109,4 +109,7 @@ int main() {
 
         currentLength += GROWTH_RATE;
     }
+
+    cout << endl << "Successfully exported to output.csv" << endl;
+    myfile.close();
 }
