@@ -26,8 +26,16 @@ vector<int> generateArray(std::mt19937 mt, int length, int maxVal) {
     return arr;
 }
 
+void printValue(string valueName, int value) {
+    cout << endl << valueName << value;
+}
+
 void printArray(std::vector<int> arr, int length) {
+    cout << endl << endl;
     for (int i = 0; i < length; i++) {
+        if (i % 20 == 0 ) {
+            cout << endl;
+        }
         cout << arr[i] << ", ";
     }
 }
@@ -45,8 +53,8 @@ int MinDistance1(std::vector<int> A) {
             }
         }
     }
-    cout << endl << "dmin1: " << dmin1 << endl;
-    cout << endl << "counter1: " << counter1 << endl;
+    printValue("dmin1: ", dmin1);
+    printValue("counter1: ", counter1);
     return dmin1;
 }
 
@@ -65,8 +73,8 @@ int MinDistance2(std::vector<int> A) {
             }
         }
     }
-    cout << endl << "dmin2: " << dmin2 << endl;
-    cout << endl << "counter2: " << counter2 << endl << endl;
+    printValue("dmin2: ", dmin2);
+    printValue("counter2: ", counter2);
     return dmin2;
 }
 
