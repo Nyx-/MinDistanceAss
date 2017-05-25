@@ -31,12 +31,17 @@ void printValue(string valueName, int value) {
 }
 
 void printArray(std::vector<int> arr, int length) {
+    if (length == 0) {
+        cout << endl << "EMPTY ARRAY";
+    }
+
     for (int i = 0; i < length; i++) {
         if (i % 20 == 0 ) {
             cout << endl;
         }
-        cout << arr[i] << ", ";
+        cout << arr[i] << " ";
     }
+    cout << endl;
 }
 
 int MinDistance1(std::vector<int> A, int length) {
@@ -75,43 +80,40 @@ int MinDistance2(std::vector<int> A, int length) {
     return dmin;
 }
 
+void testArray(string testName, std::vector<int> testVector, string expectedValue) {
+    cout << endl << "Test Name: " <<  testName;
+    printArray(testVector, testVector.size());
+    cout << endl << "Expected Value: " << expectedValue;
+    printValue("dmin1: ", MinDistance1(testVector, testVector.size()));
+    printValue("dmin2: ", MinDistance2(testVector, testVector.size()));
+    cout << endl;
+}
+
 void testMinDistance() {
-    cout << endl << endl << "-----------------------------------------------" << endl << endl;
-    cout << "Running Tests";
     int length = 10;
 
-    vector<int> a = { 1, 8, 17, 23, 36, 49, 60, 77, 85, 94 }; //6
-    vector<int> b = { 86, 12, 60, 46, 26, 38, 10, 5, 82, 95 }; //2
-    vector<int> c = { 12, 12, 12, 12, 16, 19, 19, 19, 34, 36 }; //0
-    vector<int> d = { -17, -90, -7, -42, -4, -58, -50, -33, -46, -100 }; //3
-    vector<int> e = { -69, 56, 98, 65, -30, 47, 93, -21, -40, 71 }; //5
-    vector<int> f = { 2, -2, 9, -9, 39, -39, 94, -94, 44, -44 }; //4
+    vector<int> a = { }; //INFINITY AKA INT_MAX
+    vector<int> b = { 1 }; //INFINITY AKA INT_MAX
+    vector<int> c = { 1, 8, 17, 23, 36, 49, 60, 77, 85, 94 }; //6
+    vector<int> d = { 86, 12, 60, 46, 26, 38, 10, 5, 82, 95 }; //2
+    vector<int> e = { 12, 12, 12, 12, 16, 19, 19, 19, 34, 36 }; //0
+    vector<int> f = { -17, -90, -7, -42, -4, -58, -50, -33, -46, -100 }; //3
+    vector<int> g = { -69, 56, 98, 65, -30, 47, 93, -21, -40, 71 }; //5
+    vector<int> h = { 2, -2, 9, -9, 39, -39, 94, -94, 44, -44 }; //4
 
-    cout << endl << endl << "Sorted" << endl;
-    printArray(a, length);
-    printValue("     dmin1: ", MinDistance1(a, length));
-    printValue("     dmin2: ", MinDistance2(a, length));
-    cout << endl << endl << "Random" << endl;
-    printArray(b, length);
-    printValue("     dmin1: ", MinDistance1(b, length));
-    printValue("     dmin2: ", MinDistance2(b, length));
-    cout << endl << endl << "Duplicates" << endl;
-    printArray(c, length);
-    printValue("     dmin1: ", MinDistance1(c, length));
-    printValue("     dmin2: ", MinDistance2(c, length));
-    cout << endl << endl << "Negative Only" << endl;
-    printArray(d, length);
-    printValue("     dmin1: ", MinDistance1(d, length));
-    printValue("     dmin2: ", MinDistance2(d, length));
-    cout << endl << endl << "Negative & Positive" << endl;
-    printArray(e, length);
-    printValue("     dmin1: ", MinDistance1(e, length));
-    printValue("     dmin2: ", MinDistance2(e, length));
-    cout << endl << endl << "Negative & Positive Duplicates" << endl;
-    printArray(f, length);
-    printValue("     dmin1: ", MinDistance1(f, length));
-    printValue("     dmin2: ", MinDistance2(f, length));
-    cout << endl << endl << "-----------------------------------------------" << endl << endl;
+    cout << endl << "-----------------------Start Tests------------------------";
+
+    testArray("Empty", a, "Infinity");
+    testArray("Single Item", b, "Infinity");
+    testArray("Sorted", c, "6");
+    testArray("Random", d, "2");
+    testArray("Duplicates", e, "0");
+    testArray("Negative Only", f, "3");
+    testArray("Negative & Positive", g, "5");
+    testArray("Negative & Positive Duplicates", h, "4");
+
+    cout << endl << "------------------------End Tests-------------------------";
+    cout << endl << endl;
 }
 
 int main()
