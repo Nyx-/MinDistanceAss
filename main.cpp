@@ -50,14 +50,15 @@ int MinDistance1(std::vector<int> A, int length) {
 
     for (int i = 0; i < length; i++) {
         for (int j = 0; j < length; j++) {
-            counter1 = counter1 + 1;
-            if ((i != j) && (abs(A[i] - A[j]) < dmin)) { //Basic Operation
-                dmin = abs(A[i] - A[j]);
+            if ((i != j)) { //Basic Operation
+                counter1 = counter1 + 1;
+                if (abs(A[i] - A[j]) < dmin) { //Basic Operation
+                    counter1 = counter1 + 1;
+                    dmin = abs(A[i] - A[j]);
+                }
             }
         }
     }
-//    printValue("     dmin1: ", dmin);
-//    printValue("  counter1: ", counter1);
     return dmin;
 }
 
@@ -75,8 +76,6 @@ int MinDistance2(std::vector<int> A, int length) {
             }
         }
     }
-//    printValue("     dmin2: ", dmin);
-//    printValue("  counter2: ", counter2);
     return dmin;
 }
 
