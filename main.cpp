@@ -102,8 +102,8 @@ void testMinDistance() {
 
     cout << endl << "-----------------------Start Tests------------------------";
 
-    testArray("Empty", a, "Infinity");
-    testArray("Single Item", b, "Infinity");
+    testArray("Empty", a, "N/A");
+    testArray("Single Item", b, "N/A");
     testArray("Sorted", c, "6");
     testArray("Random", d, "2");
     testArray("Duplicates", e, "0");
