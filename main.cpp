@@ -131,6 +131,9 @@ int main()
 
     testMinDistance();
 
+
+    counter1 = 0;
+    counter2 = 0;
     int result1 = 0;
     int result2 = 0;
 
