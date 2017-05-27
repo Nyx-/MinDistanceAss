@@ -10,8 +10,7 @@ using namespace std;
 vector<int> generateArray(std::mt19937 mt, int length, int maxVal) {
     //init array
     std::vector<int> arr(length);
-std:
-    uniform_int_distribution<int> dist(0, maxVal);
+    std:uniform_int_distribution<int> dist(0, maxVal);
 
     //clear after each generation
     arr.clear();
@@ -30,7 +29,7 @@ int MinDistance1(std::vector<int> A, int length) {
 
     for (int i = 0; i < length; i++) {
         for (int j = 0; j < length; j++) {
-            if ((i != j) && (abs(A[i] - A[j]) < dmin)) { //Basic Operation
+            if ((i != j) && (abs(A[i] - A[j]) < dmin)) {
                 dmin = abs(A[i] - A[j]);
             }
         }
@@ -46,7 +45,7 @@ int MinDistance2(std::vector<int> A, int length) {
     for (int i = 0; i < length - 1; i++) {
         for (int j = i + 1; j < length; j++) {
             temp = abs(A[i] - A[j]);
-            if (temp < dmin) { //Basic Operation
+            if (temp < dmin) {
                 dmin = temp;
             }
         }
@@ -59,7 +58,7 @@ int main() {
     //CONFIG
     int LENGTH_MIN = 1000; //Minimum vector length
     int LENGTH_MAX = 5000; //Maximum vector length
-    int AVERAGE_OF = 10; //AVERAGE_OF
+    int AVERAGE_OF = 10; //How many calculations of each length should be created
     int GROWTH_RATE = 500; //GROWTH_RATE 10 = Vector Length 10 & 20 & 30 & ... & LENGTH_MAX
     int VALUE_MAX = INT_MAX; //Array values will generate from 1 to VALUE_MAX
 
@@ -110,6 +109,6 @@ int main() {
         currentLength += GROWTH_RATE;
     }
 
-    cout << endl << "Successfully exported to output.csv" << endl;
+    cout << endl << "Successfully exported to outputElapsed.csv" << endl;
     myfile.close();
 }
