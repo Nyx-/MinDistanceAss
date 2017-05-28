@@ -56,10 +56,10 @@ int MinDistance2(std::vector<int> A, int length) {
 
 int main() {
     //CONFIG
-    int LENGTH_MIN = 1000; //Minimum vector length
-    int LENGTH_MAX = 5000; //Maximum vector length
-    int AVERAGE_OF = 10; //How many calculations of each length should be created
-    int GROWTH_RATE = 500; //GROWTH_RATE 10 = Vector Length 10 & 20 & 30 & ... & LENGTH_MAX
+    int LENGTH_MIN = 2000; //Minimum vector length
+    int LENGTH_MAX = 30000; //Maximum vector length
+    int AVERAGE_OF = 100; //How many calculations of each length should be created
+    int GROWTH_RATE = 2000; //GROWTH_RATE 10 = Vector Length 10 & 20 & 30 & ... & LENGTH_MAX
     int VALUE_MAX = INT_MAX; //Array values will generate from 1 to VALUE_MAX
 
     //Prepare CSV
@@ -78,9 +78,8 @@ int main() {
             //generate a new seed based on time for each array
             auto seed = chrono::high_resolution_clock::now().time_since_epoch().count();
             std::mt19937 mt(seed);
-
             vector<int> a = generateArray(mt, currentLength, VALUE_MAX);
-
+            cout << currentLength << " ";
 
             //start timer
             std::chrono::steady_clock::time_point begin1 = std::chrono::steady_clock::now();

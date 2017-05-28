@@ -89,10 +89,8 @@ void testArray(string testName, std::vector<int> testVector, string expectedValu
 }
 
 void testMinDistance() {
-    int length = 10;
-
-    vector<int> a = { }; //INFINITY AKA INT_MAX
-    vector<int> b = { 1 }; //INFINITY AKA INT_MAX
+    vector<int> a = { }; //Limitation of algorithm, actual result will be infinity or LONG_MIN, instead of what a human would expect - N/A
+    vector<int> b = { 1 }; //Limitation of algorithm, actual result will be infinity or LONG_MIN, instead of what a human would expect - N/A
     vector<int> c = { 1, 8, 17, 23, 36, 49, 60, 77, 85, 94 }; //6
     vector<int> d = { 86, 12, 60, 46, 26, 38, 10, 5, 82, 95 }; //2
     vector<int> e = { 12, 12, 12, 12, 16, 19, 19, 19, 34, 36 }; //0
@@ -115,14 +113,13 @@ void testMinDistance() {
     cout << endl << endl;
 }
 
-int main()
-{
+int main() {
     //CONFIG
-    int LENGTH_MIN = 10; //Minimum vector length
-    int LENGTH_MAX = 50; //Maximum vector length
-    int AVERAGE_OF = 20; //AVERAGE_OF
-    int GROWTH_RATE = 10; //GROWTH_RATE 10 = Vector Length 10 & 20 & 30 & ... & LENGTH_MAX
-    int VALUE_MAX = 10000; //Array values will generate from 1 to VALUE_MAX
+    int LENGTH_MIN = 2000; //Minimum vector length
+    int LENGTH_MAX = 30000; //Maximum vector length
+    int AVERAGE_OF = 100; //AVERAGE_OF
+    int GROWTH_RATE = 2000; //GROWTH_RATE 10 = Vector Length 10 & 20 & 30 & ... & LENGTH_MAX
+    int VALUE_MAX = INT_MAX; //Array values will generate from 1 to VALUE_MAX
 
     //Prepare CSV
     ofstream myfile;
@@ -144,9 +141,9 @@ int main()
             //generate a new seed based on time for each array
             auto seed = chrono::high_resolution_clock::now().time_since_epoch().count();
             std::mt19937 mt(seed);
-
             vector<int> a = generateArray(mt, currentLength, VALUE_MAX);
-            printArray(a, currentLength);
+            cout << currentLength << " ";
+//            printArray(a, currentLength);
             result1 = MinDistance1(a, currentLength);
             result2 = MinDistance2(a, currentLength);
 
